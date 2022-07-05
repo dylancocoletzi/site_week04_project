@@ -18,9 +18,9 @@ Deployed Application: [Lifetracker Deployed Site](ADD_LINK_HERE)
 - [x] **Login Page:** A form that allows users to login with email and password.
 - [x] **Registration Page:** A form that allows the user to sign up with their email, password, username, first name, and last name.
 - [x] When a user first authenticates, they should be redirected to an authenticated view (i.e the detailed activity page). When they sign out, all frontend data should be reset.
-- [x] Users have access to an overview Activity page that show one summary statistic about each of the 3 types of activity tracked.
-- [x] The API should have a `security` middleware that only allows authenticated users to access resources and only allows users to access resources about themselves. 
-- [x] Users should have the ability to track at least **1** types of activities (i.e Nutrition, Exercise, Sleep, etc.). Each activity should be tracked on separate pages.
+- [ ] Users have access to an overview Activity page that show one summary statistic about each of the 3 types of activity tracked.
+- [ ] The API should have a `security` middleware that only allows authenticated users to access resources and only allows users to access resources about themselves. 
+- [ ] Users should have the ability to track at least **1** types of activities (i.e Nutrition, Exercise, Sleep, etc.). Each activity should be tracked on separate pages.
 - [ ] Deployed website with Heroku & Surge. 
 
 **Detailed Activity Page:**
@@ -43,6 +43,11 @@ Implement any of the following features to improve the application:
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
 ![ezgif com-gif-maker (5)](https://user-images.githubusercontent.com/86747062/177384268-dc69740b-9445-4115-91b0-4ae5506c038a.gif)
+
+
+![ezgif com-gif-maker-2](https://user-images.githubusercontent.com/86747062/177384882-5e4a8343-668a-4a4b-bb02-189cdcbbec2e.gif)
+
+
 
 
 ### Reflection
