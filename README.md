@@ -2,7 +2,7 @@
 
 # Week 3 Assignment: Life Tracker
 
-Submitted by: **NAME**
+Submitted by: **Dylan Cocoletzi**
 
 Deployed Application: [Lifetracker Deployed Site](ADD_LINK_HERE)
 
@@ -42,7 +42,8 @@ Implement any of the following features to improve the application:
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
-`ADD_EMBEDDED_CODE_HERE`
+![ezgif com-gif-maker (5)](https://user-images.githubusercontent.com/86747062/177384268-dc69740b-9445-4115-91b0-4ae5506c038a.gif)
+
 
 ### Reflection
 
