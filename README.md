@@ -48,21 +48,23 @@ Implement any of the following features to improve the application:
 ![ezgif com-gif-maker-2](https://user-images.githubusercontent.com/86747062/177384882-5e4a8343-668a-4a4b-bb02-189cdcbbec2e.gif)
 
 
+![ezgif com-gif-maker-3](https://user-images.githubusercontent.com/86747062/177385415-c0bd9a68-d658-4c59-8dc7-ab7318da3104.gif)
+
 
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-[Add your response here]
+Yes the topics in the lab did prepare me because we had to implement similar features to our website.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-[Add your response here]
+If I had more time, I would spend more time to get the backend to work and be able to connect it to my front end.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-[Add your response here]
+What went well was I was able to display my 5 core features I completeted but I notice that one of my peers connected their project and I want to do that.
 
 ### Open-source libraries used
 
