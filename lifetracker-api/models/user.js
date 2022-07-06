@@ -5,17 +5,17 @@ const { BadRequestError, UnauthorizedError } = require("../utils/errors")
 const { use } = require("../routes/auth")
 
 class User {
-static async makePublicUser(user){
-    return {
-        id: user.id,
-        email: user.email,
-        username: user.username, 
-        first_name: user.first_name, 
-        last_name: user.last_name, 
-        created_at: user.created_at, 
-        updated_at: user.updated_at
+    static async makePublicUser(user){
+        return {
+            id: user.id,
+            email: user.email,
+            username: user.username, 
+            first_name: user.first_name, 
+            last_name: user.last_name, 
+            created_at: user.created_at, 
+            updated_at: user.updated_at
+        }
     }
-}
 
     static async login(credentials){
         const requireFileds = ["email", "password"]
@@ -80,15 +80,5 @@ static async makePublicUser(user){
         return user
     }
 }
-
-
-// id  SERIAL PRIMARY KEY,
-// email TEXT NOT NULL UNIQUE CHECK (POSITION('@' IN email) > 1),
-// username TEXT NOT NULL,
-// first_name TEXT NOT NULL,
-// last_name TEXT NOT NULL,
-// password TEXT NOT NULL,
-// created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-// updated_at TEXT NOT NULL DEFAULT NOW()
 
 module.exports = User

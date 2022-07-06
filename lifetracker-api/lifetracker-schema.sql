@@ -6,5 +6,34 @@ CREATE TABLE users (
     last_name TEXT NOT NULL,
     password TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TEXT NOT NULL DEFAULT NOW()
-)
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE nutrition (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    category TEXT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    calories INT NOT NULL,
+    image_url TEXT NOT NULL,
+    user_id INT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE sleep(
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    start_time TIMESTAMP NOT NULL DEFAULT NOW(),
+    end_time TIMESTAMP NOT NULL DEFAULT NOW(),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE exercise(
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    category TEXT NOT NULL,
+    duration INT NOT NULL,
+    intensity INT NOT NULL CHECK (intensity > 0 AND intensity <= 10),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
