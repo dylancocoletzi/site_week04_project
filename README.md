@@ -50,6 +50,12 @@ Implement any of the following features to improve the application:
 
 ### Week 2
 
+![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/86747062/178084046-4ab7faa5-2122-4b9d-9d38-2ba57782f763.gif)
+
+
+![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/86747062/178084119-5a51f7a0-f425-4028-bb01-f9953a048733.gif)
+
+
 
 
 ### Reflection
