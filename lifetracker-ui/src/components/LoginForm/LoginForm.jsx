@@ -2,8 +2,13 @@ import * as React from "react"
 import "./LoginForm.css"
 import {Link} from "react-router-dom"
 import {useState} from "react"
+import { useNavigate} from "react-router-dom"
+import axios from "axios"
+import apiClient from "../../services/apiClient"
 
-export default function Navbar(props){
+export default function LoginForm(props){
+    const navigate = useNavigate()
+    const [isProcessing, setIsProcessing] = useState(false)
     const [errors, setErrors] = useState({})
     const [form, setForm] = useState({
         email: "",
@@ -19,10 +24,30 @@ export default function Navbar(props){
         }
         setForm((f) => ({ ...f, [event.target.name]: event.target.value}))
     }
+
+    const handleOnSumbit = async (e) => {
+        e.preventDefault()
+        setIsProcessing(true)
+        setErrors((e) => ({...e, form: null}))
+
+        const { data, error } = await apiClient.loginUser({ email : form.email, username: form.username, first_name: form.firstName, last_name: form.lastName, password: form.password})
+        if(error){
+            console.log("error", error)
+            setErrors((e) => ({ ...e, form: error}))
+        } 
+        if(data?.user){
+            props.setUser(data.user)
+            apiClient.setToken(data.token)
+            // props.handleOnLog()
+            navigate("/activity")
+        }
+        setIsProcessing(false)
+    }
     return(
         <div className="login-form">
             <div className="container">
                 <h2>Login</h2>
+                {Boolean(errors.form) && <span className="error">{errors.form}</span>}
                 <br/>
                 <div className="inputs">
                     <div className="form-input">
@@ -34,7 +59,7 @@ export default function Navbar(props){
                         <label for="password">Password</label>
                         <input type="password" name="password" placeholder="password" value={form.password} onChange={handleOnInputChange}/>
                     </div>
-                    <button className="btn">Login</button>
+                    <button className="btn" disabled={isProcessing} onClick={handleOnSumbit}>{isProcessing ? "Loading..." : "Login"}</button>
                 </div>
                 <div className="footer">
                     <p>

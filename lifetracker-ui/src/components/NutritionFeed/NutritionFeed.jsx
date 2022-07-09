@@ -9,10 +9,14 @@ export default function NutritionFeed(props){
         {id: 3, name : "carrot", url : "", calories : 220, quantity: 1, date: "01/16/2023", category: "vegetables"},
         {id: 4, name : "bread", url : "", calories : 660, quantity: 1, date: "01/16/2023", category: "carbs"}
     ]
+    // console.log(nut)
     return (
         <div className="nutrition-feed">
-            {overview.map((element, idx) => {
-                return <NutritionCard key={idx} quantity={element.quantity} imageUrl={element.url} name={element.name} calories={element.calories} category={element.category} createdAt={element.date} id={element.id}></NutritionCard>
+            {props.nutrition.map((element, idx) => {
+                const date = new Date(element.created_at)
+                console.log("dateE", date)
+                const enUSFormatter = new Intl.DateTimeFormat('en-US')
+                return <NutritionCard key={idx} quantity={element.quantity} imageUrl={element.image_url} name={element.name} calories={element.calories} category={element.category} createdAt={enUSFormatter.format(date)} id={element.id}></NutritionCard>
             })}
         </div>
     )

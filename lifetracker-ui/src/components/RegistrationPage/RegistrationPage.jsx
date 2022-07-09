@@ -8,11 +8,14 @@ export default function RegistrationPage(props){
     const navigate = useNavigate()
     return (
         <div className="registration-page">
-            {props.isLogin ?
-            React.useEffect(() => {
-                navigate("/activity"), []
-            })
-            : <RegistrationForm></RegistrationForm>}
+            {
+            // props.user.email 
+            // ?
+            // React.useEffect(() => {
+            //     navigate("/activity"), []
+            // })
+            // : 
+            <RegistrationForm setUser={props.setUser} ></RegistrationForm>}
         </div>
     )
 }

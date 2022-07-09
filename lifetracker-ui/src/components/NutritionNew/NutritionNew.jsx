@@ -6,7 +6,7 @@ export default function NutritionNew(props){
     return (
         <div className="nutrition-new">
             {/* <h2>Record Nutrition</h2> */}
-            <NutritionForm></NutritionForm>
+            <NutritionForm handleNutritonForm={props.handleNutritonForm} addNutrition={props.addNutrition}></NutritionForm>
         </div>
     )
 }

@@ -1,9 +1,14 @@
 import * as React from "react"
 import "./RegistrationForm.css"
 import {Link} from "react-router-dom"
-import {useState} from "react"
+import {useState, useEffect} from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import apiClient from "../../services/apiClient"
 
 export default function RegistrationForm(props){
+    const navigate = useNavigate()
+    const [isProcessing, setIsProcessing] = useState(false)
     const [errors, setErrors] = useState({})
     const [form, setForm] = useState({
         email: "",
@@ -38,12 +43,58 @@ export default function RegistrationForm(props){
 
         setForm((f) => ({ ...f, [event.target.name]: event.target.value}))
     }
-    console.log(form)
-    console.log(errors)
+    const handleOnSubmit = async () => {
+        setIsProcessing(true)
+        setErrors((e) => ({ ...e, form: null}))
+
+        if(form.passwordConfirm !== form.password){
+            setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match."}))
+            setIsProcessing(false)
+            return
+        }else{
+            setErrors((e) => ({ ...e, passwordConfirm: null}))
+        }
+
+        const { data, error } = await apiClient.signUpUser({ email : form.email, username: form.username, first_name: form.firstName, last_name: form.lastName, password: form.password})
+        if(error){
+            setErrors((e) => ({ ...e, form: error}))
+        } 
+        if(data?.user){
+            props.setUser(data.user)
+            apiClient.setToken(data.token)
+            navigate("/activity")
+        }
+        setIsProcessing(false)
+        // try{
+        //     const res = await axios.post("http://localhost:3001/auth/register", {
+        //         email : form.email,
+        //         username: form.username,
+        //         first_name: form.firstName,
+        //         last_name: form.lastName,
+        //         password: form.password
+        //     })
+        //     if(res?.data?.user){
+        //         props.setUser(res.data)
+        //         console.log("res.data", res.data)
+        //         setIsProcessing(false)
+        //         navigate("/activity")
+        //     }else{
+        //         setErrors((e) => ({...e, form: "Something went wrong with registration"}))
+        //         setIsProcessing(false)
+        //     }
+        // }catch(err){
+        //     console.log(err)
+        //     const message = err?.response?.data?.error?.message
+        //     setErrors((e) => ({...e, form: message ? String(message) : String(err)}))
+        //     setIsProcessing(false)
+        // }
+    }
     return (
         <div className="registeration-form">
             <div className="container">
                 <h2 className="title">Register</h2>
+                {errors.form && <span className="error">{errors.form}</span>}
+                {/* {Boolean(errors.form) && <span className="error">{errors.form}</span>} */}
                 <br/>
                 <div className="inputs">
                     <div className="form-input">
@@ -76,7 +127,7 @@ export default function RegistrationForm(props){
                         <input type="password" name="passwordConfirm" placeholder="Confirm your password" value={form.password_confirm} onChange={handleOnInputChange}/>
                         {errors.passwordConfirm && <span className="error">{errors.passwordConfirm}</span>}
                     </div>
-                    <button className="btn">Create Account</button>
+                    <button className="btn" disabled={isProcessing} onClick={handleOnSubmit}>{isProcessing ? "Loading..." : "Create Account"}</button>
                 </div>
                 <div className="footer">
                     <p>

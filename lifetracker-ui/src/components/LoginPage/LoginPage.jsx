@@ -8,11 +8,11 @@ export default function LoginPage(props){
     const navigate = useNavigate()
     return (
         <div className="login-page">
-            {props.isLogin ?
+            {props.user?.user?.email ?
             React.useEffect(() => {
                 navigate("/activity"), []
             })
-            : <LoginForm></LoginForm>}   
+            : <LoginForm setUser={props.setUser}></LoginForm>}   
         </div>
     )
 }

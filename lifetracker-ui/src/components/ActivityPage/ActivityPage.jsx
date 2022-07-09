@@ -9,10 +9,10 @@ export default function ActivityPage(props){
     const navigate = useNavigate()
     return (
         <div className="activie-page">
-            {true ?
-            <ActivityFeed></ActivityFeed>
+            {props.user.email ?
+            <ActivityFeed activity={props.activity} ></ActivityFeed>
             :
-            <LoginForm></LoginForm>
+            <LoginForm user={props.user} setUser={props.setUser}></LoginForm>
             }
         </div>
     )

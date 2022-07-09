@@ -1,6 +1,7 @@
 import * as React from "react"
 import "./NavLink.css"
 import {Link} from "react-router-dom"
+import apiClient from "../../services/apiClient"
 
 export default function NavLink(props){
     return (
@@ -29,9 +30,9 @@ export default function NavLink(props){
                     Sleep
                 </Link>
             </li>
-            {props.isLogin ? 
+            {props.user.email ? 
             <li className="btn">
-                Log Out
+                <span onClick={props.handleLogout}>Logout</span>
             </li> :
             <>
                 <li>

@@ -12,7 +12,7 @@ export default function Navbar(props) {
                         <img src="http://codepath-lifetracker.surge.sh/static/media/codepath.70a9a31f.svg" alt="logo"/>
                     </Link>
                 </div>
-                <NavLink isLogin={props.isLogin} />
+                <NavLink handleLogout={props.handleLogout} isLogin={props.isLogin}  user={props.user} setUser={props.setUser}/>
             </div>
         </nav>
     )

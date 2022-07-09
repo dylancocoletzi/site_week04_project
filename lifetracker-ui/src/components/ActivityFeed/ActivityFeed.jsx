@@ -5,6 +5,7 @@ import SummaryStat from "components/SummaryStat/SummaryStat"
 import {Link} from "react-router-dom"
 
 export default function ActivityFeed(props){
+    console.log("propsA", props)
     const avgCaloriesPerCategory = [
         {category: "candy", avgCaloriesPerCategory: 100.0},
         {category: "drink", avgCaloriesPerCategory: 300.0},
@@ -31,12 +32,12 @@ export default function ActivityFeed(props){
                 <div className="stats">
                     <h4>Average Calories Per Category</h4>
                     <div className="per-category">
-                        {avgCaloriesPerCategory.length > 6 ?
-                        avgCaloriesPerCategory.slice(0, 6).map((element, idx) =>{
-                            return <SummaryStat type={"card-cat"} stat={element.avgCaloriesPerCategory} label={"calories"} substat={element.category} key={idx} ></SummaryStat>
+                        {props.activity.length > 6 ?
+                        props.activity.slice(0, 6).map((element, idx) =>{
+                            return <SummaryStat type={"card-cat"} stat={element.sum / element.count} label={"calories"} substat={element.category} key={idx} ></SummaryStat>
                         }):
-                        avgCaloriesPerCategory.map((element, idx) => {
-                            return <SummaryStat type={"card-cat"} stat={element.avgCaloriesPerCategory} label={"calories"} substat={element.category} key={idx} ></SummaryStat>
+                        props.activity.map((element, idx) => {
+                            return <SummaryStat type={"card-cat"} stat={element.sum / element.count} label={"calories"} substat={element.category} key={idx} ></SummaryStat>
                         })}
                     </div>
                     <h4>Total Calories Per Day</h4>
