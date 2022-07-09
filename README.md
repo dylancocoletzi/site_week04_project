@@ -56,6 +56,13 @@ Implement any of the following features to improve the application:
 ![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/86747062/178084119-5a51f7a0-f425-4028-bb01-f9953a048733.gif)
 
 
+![ezgif com-gif-maker (8)](https://user-images.githubusercontent.com/86747062/178084264-819ae9a5-6294-4f14-9de5-4a1357232b61.gif)
+
+
+![ezgif com-gif-maker (9)](https://user-images.githubusercontent.com/86747062/178084314-34126b00-c308-47ab-9ada-35f9721fe149.gif)
+
+
+
 
 
 ### Reflection
