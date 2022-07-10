@@ -2,7 +2,7 @@
 
 Submitted by: **Dylan Cocoletzi**
 
-Deployed Application: [Lifetracker Deployed Site] life-tracker-02.surge.sh
+Deployed Application: life-tracker-02.surge.sh
 
 ## Application Features
 
