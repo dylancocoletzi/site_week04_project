@@ -11,7 +11,7 @@ export default function SleepOverview(props){
                     <h3>Overview</h3>
                     <Link className="add" to="/sleep/create">Add Sleep</Link>
                 </div>
-                <SleepFeed sleep={props.sleep}></SleepFeed>
+                <SleepFeed sleep={props.sleep} user={props.user}></SleepFeed>
             </div>
         </div>
     )

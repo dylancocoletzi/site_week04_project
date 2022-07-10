@@ -5,8 +5,10 @@ import {useState} from "react"
 import { useNavigate} from "react-router-dom"
 import axios from "axios"
 import apiClient from "../../services/apiClient"
+import { useAuthContext } from "../../contexts/auth"
 
 export default function LoginForm(props){
+    // const { user, setUser} = useAuthContext()
     const navigate = useNavigate()
     const [isProcessing, setIsProcessing] = useState(false)
     const [errors, setErrors] = useState({})
@@ -32,13 +34,12 @@ export default function LoginForm(props){
 
         const { data, error } = await apiClient.loginUser({ email : form.email, username: form.username, first_name: form.firstName, last_name: form.lastName, password: form.password})
         if(error){
-            console.log("error", error)
             setErrors((e) => ({ ...e, form: error}))
         } 
         if(data?.user){
-            props.setUser(data.user)
             apiClient.setToken(data.token)
-            // props.handleOnLog()
+            console.log("data", data)
+            props.setUser(data.user)
             navigate("/activity")
         }
         setIsProcessing(false)

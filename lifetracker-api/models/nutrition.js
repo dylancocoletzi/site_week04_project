@@ -42,8 +42,7 @@ class Nutrition{
         return nutrition
     }
 
-    static async listNutritionForUser(){
-        // console.log("this",user_id)
+    static async listNutritionForUser({user_id}){
         const results = await db.query(
             `
             SELECT  n.id,
@@ -57,10 +56,10 @@ class Nutrition{
                     n.created_at AS "created_at"
             FROM nutrition AS n
                 JOIN users AS u ON u.id = n.user_id
+            WHERE n.user_id = $1
             ORDER BY n.created_at DESC
             `
-        ,)
-        // console.log("this",user_id)
+        ,[user_id])
         return results.rows
     }
 }

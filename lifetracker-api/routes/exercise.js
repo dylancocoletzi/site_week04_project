@@ -8,8 +8,18 @@ router.get("/", async (req, res, next) => {
     try{
         //return a json response back with all user-owned nutrition
         //in an array like { "nutritions": [...]}
-        const exercises = await Exercise.listExerciseForUser()
+        const exercises = await Exercise.listExerciseForUser({user_id: req.headers.user_id})
         return res.status(200).json({ exercises })
+    }catch(err){
+        next(err)
+    }
+})
+
+router.get("/",  async (req, res, next) => {
+    try{
+        console.log("headers", req.headers)
+        const nutritions = await Nutrition.listNutritionForUser({user_id: req.headers.user_id})
+        return res.status(200).json({ nutritions })
     }catch(err){
         next(err)
     }

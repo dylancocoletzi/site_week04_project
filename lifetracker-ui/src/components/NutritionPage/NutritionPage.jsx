@@ -6,9 +6,9 @@ import NutritionOverview from "../NutritionOverview/NutritionOverview"
 import NutritionNew from "../NutritionNew/NutritionNew"
 import NutritionDetail from "../NutritionDetail/NutritionDetail"
 import LoginForm from "../LoginForm/LoginForm"
+import apiClient from "../../services/apiClient"
 
 export default function NutritionPage(props){
-    // console.log("propsN", props.user)
     return (
         <div className="nutrition-page">
             {props.user.email ? 

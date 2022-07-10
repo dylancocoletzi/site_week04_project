@@ -16,7 +16,7 @@ export default function SleepPage(props){
                     <h1>Sleep</h1>
                 </div>
                 <Routes>
-                    <Route path="/" element={<SleepOverview sleep={props.sleep}></SleepOverview>}></Route>
+                    <Route path="/" element={<SleepOverview sleep={props.sleep} user={props.user}></SleepOverview>}></Route>
                     <Route path="/create" element={<SleepNew addSleep={props.addSleep}></SleepNew>}></Route>
                     <Route path="/id/:sleepId" element={<SleepDetail sleep={props.sleep}></SleepDetail>}></Route>
                 </Routes>

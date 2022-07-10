@@ -4,9 +4,9 @@ const security = require("../middleware/security")
 const permissions = require("../middleware/permissions")
 const router = express.Router()
 
-router.get("/", async (req, res, next) => {
+router.get("/",  async (req, res, next) => {
     try{
-        const nutritions = await Nutrition.listNutritionForUser()
+        const nutritions = await Nutrition.listNutritionForUser({user_id: req.headers.user_id})
         return res.status(200).json({ nutritions })
     }catch(err){
         next(err)

@@ -11,7 +11,7 @@ export default function NutritionOverview(props){
                     <h3>Overview</h3>
                     <Link className="add" to="/nutrition/create">Record Nutrition</Link>
                 </div>
-                <NutritionFeed nutrition={props.nutrition}></NutritionFeed>
+                <NutritionFeed nutrition={props.nutrition} user={props.user}></NutritionFeed>
             </div>
         </div>
     )

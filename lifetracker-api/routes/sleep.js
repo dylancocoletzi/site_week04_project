@@ -6,9 +6,7 @@ const router = express.Router()
 
 router.get("/", async (req, res, next) => {
     try{
-        //return a json response back with all user-owned nutrition
-        //in an array like { "nutritions": [...]}
-        const sleepss = await Sleep.listSleepForUser()
+        const sleepss = await Sleep.listSleepForUser({user_id: req.headers.user_id})
         return res.status(200).json({ sleepss })
     }catch(err){
         next(err)

@@ -27,7 +27,6 @@ export default function AppContainer(){
 
 function App() {
   const [isLogin, setIsLogin] = useState(false)
-  // const [user, setUser] = useState({})
   const { user, setUser } = useAuthContext()
   const [isFetching, setIsFetching] = useState(false)
   const [isFetchingExercise, setIsFetchingExercise] = useState(false)
@@ -38,81 +37,11 @@ function App() {
   const [exercise, setExercise] = useState([])
   const [nutrition, setNutrition] = useState([])
   const [error, setError] = useState(null)
-  useEffect(() => {
-    const fetchNutritions = async () => {
-      setIsFetching(true)
-
-      const { data, error } = await apiClient.listNutritions(user.id)
-      if(data){
-        console.log("data", data)
-        setNutrition(data.nutritions)
-      }
-      if(error){
-        console.log("error", error)
-        setError(error)
-      }
-      setIsFetching(false)
-    }
-
-    fetchNutritions()
-  }, [])
-
-  useEffect(() => {
-    const fetchExercises = async () => {
-      setIsFetchingExercise(true)
-
-      const { data, error } = await apiClient.listExercises()
-      if(data){
-        setExercise(data.exercises)
-      }
-      if(error){
-        setError(error)
-      }
-      setIsFetchingExercise(false)
-    }
-
-    fetchExercises()
-  }, [])
-
-  useEffect(() => {
-    const fetchSleeps = async () => {
-      setIsFetchingSleep(true)
-
-      const { data, error } = await apiClient.listSleeps()
-      if(data){
-        setSleep(data.sleepss)
-      }
-      if(error){
-        setError(error)
-      }
-      setIsFetchingSleep(false)
-    }
-
-    fetchSleeps()
-  }, [])
-
-  useEffect(() => {
-    const fetchActivites = async () => {
-      setIsFetchingActivity(true)
-
-      const { data, error } = await apiClient.listActivities()
-      if(data){
-        setActivity(data.activities)
-      }
-      if(error){
-        setError(error)
-      }
-      setIsFetchingActivity(false)
-    }
-
-    fetchActivites()
-  }, [])
 
   useEffect(() => {
     const fetchUser = async () => {
       const { data, error } = await apiClient.fetchUserFromToken()
       if(data){
-        console.log("data", data)
         setUser(data.user)
       }
       if(error){
@@ -160,30 +89,6 @@ function App() {
 
     fetchActivites()
   }
-
-  // const handleOnLog = async () => { 
-  //   /** */
-  //   useEffect(() => {
-  //     const fetchNutritions = async () => {
-  //       setIsFetching(true)
-  
-  //       const { data, error } = await apiClient.listNutritions(user.id)
-  //       if(data){
-  //         console.log("data", data)
-  //         setNutrition(data.nutritions)
-  //       }
-  //       if(error){
-  //         console.log("error", error)
-  //         setError(error)
-  //       }
-  //       setIsFetching(false)
-  //     }
-  
-  //     fetchNutritions()
-  //   }, [])
-  //   /** */
-  // }
-  // console.log("user", nutrition)
   return (
     <div className="app">
       <React.Fragment>{

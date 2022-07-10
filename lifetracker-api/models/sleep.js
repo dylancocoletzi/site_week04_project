@@ -39,7 +39,7 @@ class Sleep{
         return sleep
     }
 
-    static async listSleepForUser(){
+    static async listSleepForUser({user_id}){
         const results = await db.query(
             `
             SELECT  s.id,
@@ -50,10 +50,10 @@ class Sleep{
                     s.created_at AS "created_at"
             FROM sleep AS s
                 JOIN users AS u ON u.id = s.user_id
+            WHERE s.user_id = $1
             ORDER BY s.created_at DESC
             `
-        ,)
-        // console.log(results.rows)
+        ,[user_id])
         return results.rows
     }
 }

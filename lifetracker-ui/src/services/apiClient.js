@@ -17,7 +17,8 @@ class ApiClient{
         const url = `${this.remoteHostUrl}/${endpoint}`
 
         const headers = {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "user_id": data
         }
 
         if(this.token){
@@ -34,29 +35,29 @@ class ApiClient{
         }
     }
 
-    async listActivities(){
-        return await this.request({ endpoint: `activity`, method: `GET`})
+    async listActivities(user_id){
+        return await this.request({ endpoint: `activity`, method: `GET`, data: user_id})
     }
 
-    async listSleeps(){
-        return await this.request({ endpoint: `sleep`, method: `GET`})
+    async listSleeps(user_id){
+        return await this.request({ endpoint: `sleep`, method: `GET`, data: user_id})
     }
 
     async createSleep(sleep){
         return await this.request({endpoint: `sleep`, method: `POST`, data: sleep})
     }
 
-    async listExercises(){
-        return await this.request({ endpoint: `exercise`, method: `GET`})
+    async listExercises(user_id){
+        return await this.request({ endpoint: `exercise`, method: `GET`, data: user_id})
     }
 
     async createExercise(exercise){
         return await this.request({endpoint: `exercise`, method: `POST`, data: exercise})
     }
 
-    async listNutritions(){
-        // console.log("users", user_id)
-        return await this.request({ endpoint: `nutrition`, method: `GET`})
+    async listNutritions(user_id){
+        console.log("user_id", user_id)
+        return await this.request({endpoint: `nutrition`, method: `GET`, data: user_id})
     }
 
     async createNutrition(nutrition){

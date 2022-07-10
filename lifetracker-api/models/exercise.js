@@ -41,7 +41,7 @@ class Exercise{
         return exercise
     }
 
-    static async listExerciseForUser(){
+    static async listExerciseForUser({user_id}){
         const results = await db.query(
             `
             SELECT  e.id,
@@ -54,9 +54,10 @@ class Exercise{
                     e.created_at AS "created_at"
             FROM exercise AS e
                 JOIN users AS u ON u.id = e.user_id
+            WHERE e.user_id = $1
             ORDER BY e.created_at DESC
             `
-        ,)
+        ,[user_id])
         console.log(results.rows)
         return results.rows
     }

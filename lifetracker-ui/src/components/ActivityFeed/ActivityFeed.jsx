@@ -1,11 +1,11 @@
 import * as React from "react"
 import "./ActivityFeed.css"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import SummaryStat from "components/SummaryStat/SummaryStat"
 import {Link} from "react-router-dom"
+import apiClient from "../../services/apiClient"
 
 export default function ActivityFeed(props){
-    console.log("propsA", props)
     const avgCaloriesPerCategory = [
         {category: "candy", avgCaloriesPerCategory: 100.0},
         {category: "drink", avgCaloriesPerCategory: 300.0},
@@ -20,32 +20,52 @@ export default function ActivityFeed(props){
         {date: "12-23-2022", totalCaloriesPerDay: 1000},
         {date: "12-24-2022", totalCaloriesPerDay: 800}
     ]
+    const [isFetching, setIsFetching] = useState(false)
+    const [activity, setActivity] = useState([])
+    const [error, setError] = useState(null)
+    useEffect(() => {
+        const fetchActivities = async () => {
+          if(!(Object.keys(props.user).length === 0)){
+            setIsFetching(true)
+        
+            const { data, error } = await apiClient.listActivities(props.user.id)
+            if(error){
+                setError(error)
+            }
+            if(data){
+                setActivity(data.activities)
+            }
+            setIsFetching(false)
+          }
+        }
+    
+        fetchActivities()
+      }, [])
     return (
         <div className="activity-feed">
                 <div className="actions">
                     <h2>Activity Feed</h2>
                     <div className="btnd">
-                        {/* <button className="button">Record Nutrition</button> */}
                         <Link className="button" to="/nutrition/create">Record Nutrition</Link>
                     </div>
                 </div>
                 <div className="stats">
                     <h4>Average Calories Per Category</h4>
+                    {activity.length === 0 ?
+                    <div className="empty">
+                        <h2 className="here">Nothing here yet.</h2>
+                    </div>
+                    :
                     <div className="per-category">
-                        {props.activity.length > 6 ?
-                        props.activity.slice(0, 6).map((element, idx) =>{
+                        {activity.length > 6 ?
+                        activity.slice(0, 6).map((element, idx) =>{
                             return <SummaryStat type={"card-cat"} stat={element.sum / element.count} label={"calories"} substat={element.category} key={idx} ></SummaryStat>
                         }):
-                        props.activity.map((element, idx) => {
+                        activity.map((element, idx) => {
                             return <SummaryStat type={"card-cat"} stat={element.sum / element.count} label={"calories"} substat={element.category} key={idx} ></SummaryStat>
                         })}
                     </div>
-                    <h4>Total Calories Per Day</h4>
-                    <div className="per-day">
-                        {totalCaloriesPerDay.map((element, idx) => {
-                            return <SummaryStat key={idx} type={"card-day"}stat={element.totalCaloriesPerDay} label={"calories"} substat={element.date}></SummaryStat>
-                        })}
-                    </div>
+                    }
                 </div>
         </div>
     )

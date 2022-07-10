@@ -62,3 +62,6 @@ h4{
     display: grid;
     grid-template-columns: auto auto auto;
 }
+.stats .here{
+    margin-left: 380px;
+}

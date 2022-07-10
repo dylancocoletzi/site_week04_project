@@ -8,7 +8,6 @@ import ExerciseDetail from "../ExerciseDetail/ExerciseDetail"
 import LoginForm from "../LoginForm/LoginForm"
 
 export default function ExercisePage(props){
-    console.log("props", props.user)
     return (
         <div className="exercise-page">
             {props.user.email ?
@@ -17,7 +16,7 @@ export default function ExercisePage(props){
                     <h1>Exercise</h1>
                 </div>
                 <Routes>
-                    <Route path="/" element={<ExerciseOverview exercise={props.exercise}></ExerciseOverview>}></Route>
+                    <Route path="/" element={<ExerciseOverview exercise={props.exercise} user={props.user}></ExerciseOverview>}></Route>
                     <Route path="/create" element={<ExerciseNew addExercise={props.addExercise}></ExerciseNew>}></Route>
                     <Route path="/id/:exerciseId" element={<ExerciseDetail exercise={props.exercise}></ExerciseDetail>}></Route>
                 </Routes>

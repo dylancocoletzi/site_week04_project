@@ -11,7 +11,7 @@ export default function ExerciseOverview(props){
                     <h3>Overview</h3>
                     <Link className="add-e" to="/exercise/create">Add Exercise</Link>
                 </div>
-                <ExerciseFeed exercise={props.exercise}></ExerciseFeed>
+                <ExerciseFeed exercise={props.exercise} user={props.user}></ExerciseFeed>
             </div>
         </div>
     )
